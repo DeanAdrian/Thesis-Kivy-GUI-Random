@@ -1,0 +1,36 @@
+<BlinkingButton@Button>:
+    text: ""
+    animated_color: (1,1,1,1)
+    blink_size: 0
+    canvas.before:
+        Color:
+            rgba: self.animated_color
+        Rectangle:
+            size: self.blink_size, self.blink_size
+            pos: self.pos[0] + self.size[0]/2. - self.blink_size/2., self.pos[1] + self. size[1]/2. - self.blink_size/2.
+
+FloatLayout
+    BlinkingButton:
+        id: left_animation
+        background_color: 0, 0, 0, 0
+        size_hint: .0000002, .0000002
+        pos_hint: {"center_y": 0.5, "center_x": 0}
+        on_release:
+            app.animate_the_widget(self)
+
+    BlinkingButton:
+        id: right_animation
+        background_color: 1, 1, 0, 0
+
+        size_hint: .0000002, .0000002
+        pos_hint: {"center_y": .5, "center_x": 1}
+        on_release:
+            app.animate_the_widget(self)
+
+    BlinkingButton:
+        id: back_animation
+        background_color: 1, 1, 1, 0
+        size_hint: .0000002, .0000002
+        pos_hint: {"center_y": 0, "center_x": .5}
+        on_release:
+            app.animate_the_widget(self)
